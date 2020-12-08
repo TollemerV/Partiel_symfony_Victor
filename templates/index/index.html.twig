@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TOP ALBUM{% endblock %}
+
+{% block body %}
+
+<h1> Last 30 albums </h1> 
+{% if is_granted('ROLE_ADMIN') %}
+<h2>Bienvenue !  Vous pouvez maitenant editer les artistes dans l'onglet Artistes ! <b2>
+{% endif %}
+
+<div class="container d-flex ">
+  <div class="row align-self-center">
+{% for album in albums %}
+<div class="card" style="width: 18rem; ">
+  <img src="{{album.cover}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{album.name}}</h5>
+    <p class="card-text">{{album.releaseYear}}</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+{% endfor %}
+</div>
+</div>
+{% endblock %}
